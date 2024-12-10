@@ -1,0 +1,157 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingPrefix"
+    android:orientation="vertical"
+    android:padding="16dp"
+
+    >
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="135dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/field"
+
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Farm Manager"
+        android:layout_gravity="center"
+        android:padding="25dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/green_theme"
+
+/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailedittext"
+        android:padding="15dp"
+        android:inputType="textEmailAddress"
+        android:hint="Email"
+        android:background="@drawable/rectangular_input_background"
+        android:layout_margin="10dp"
+
+
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordedittext"
+        android:padding="15dp"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:layout_margin="10dp"
+        android:background="@drawable/rectangular_input_background"
+
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginedittext"
+        android:background="@drawable/rectangular_input_background"
+        android:padding="15dp"
+        android:layout_margin="10dp"
+        android:text="Login"
+        android:onClick="onloginclick"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="1dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign in with"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/googlesigninbtn"
+            android:text="Google"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/rectangular_input_background"
+
+            android:textColor="@color/white"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/facebooksigninbtn"
+            android:text="Facebook"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/rectangular_input_background"
+            android:backgroundTint="@color/green_theme"
+            android:textColor="@color/white"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:id="@+id/forgotpasstxt"
+        android:text="Forgot Password"
+        android:clickable="true"
+        android:onClick="OnForgotPasswordClick"
+        android:textColor="@color/green_theme"
+        android:textSize="17dp"
+
+
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginLeft="-19dp"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dont have an account? "
+            android:padding="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Registertxt"
+            android:text="Register"
+            android:textColor="@color/green_theme"
+            android:clickable="true"
+
+            android:onClick="OnRegisterClick"/>
+    </LinearLayout>
+
+</LinearLayout>
+
