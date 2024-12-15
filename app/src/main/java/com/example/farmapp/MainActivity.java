@@ -1,5 +1,6 @@
 package com.example.farmapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.view.View;
@@ -25,17 +26,35 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        EditText emailInputedittext = findViewById(R.id.emailedittext);
-        EditText passwordInputedittext = findViewById(R.id.passwordedittext);
-        String emailinput = emailInputedittext.getText().toString().trim();
-        String passwordinput =passwordInputedittext.getText().toString().trim();
 
 
         }
     public void onloginclick (View v){
-        Toast.makeText(this, "LOGIN SUCCESS", Toast.LENGTH_SHORT).show();
+        EditText emailInputedittext = findViewById(R.id.emailedittext);
+        EditText passwordInputedittext = findViewById(R.id.passwordedittext);
 
 
+        String emailinput = emailInputedittext.getText().toString().trim();
+        String passwordinput =passwordInputedittext.getText().toString().trim();
+
+        if (emailinput.equals("admin@gmail.com") && passwordinput.equals("admin")){
+            Intent dashboardlauncher = new Intent(MainActivity.this, Dashboard.class);
+            startActivity(dashboardlauncher);
+        }else {
+            Toast.makeText(this, "LOGIN UNSUCCESSFUL", Toast.LENGTH_SHORT).show();
+
+
+        }
+
+
+
+
+
+    }
+
+    public void OnRegisterClick (View v){
+        Intent registerlauncher = new Intent(MainActivity.this, Register.class);
+        startActivity(registerlauncher);
     }
 }
 
