@@ -1,46 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/white">
+    android:background="#2B872F">
+
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/welcome"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Farm Produce"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="76dp"
+        android:layout_marginBottom="78dp"
+        android:gravity="center"
+        android:text="Welcome to TheBoyz Farm Produce Application "
+        android:textColor="#EAFFFFFF"
+        android:textSize="38dp"
+        app:layout_constraintBottom_toTopOf="@+id/desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/desc"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Agricultural Management System"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp" />
-
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter username"
-        android:layout_marginTop="24dp" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter password"
-        android:inputType="textPassword"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="294dp"
+        android:gravity="center"
+        android:text="Login to access the DashBoard"
+        android:textColor="#EAFFFFFF"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:backgroundTint="#4CAF50"
-        android:layout_marginTop="24dp" />
+        android:text="LogIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/desc" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/reg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="74dp"
+        android:gravity="center"
+        android:text="Register if you dont have an account!"
+        android:textColor="#EAFFFFFF"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"/>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="@+id/reg"
+        app:layout_constraintStart_toStartOf="@+id/reg"
+        app:layout_constraintTop_toBottomOf="@+id/reg" />
+</androidx.constraintlayout.widget.ConstraintLayout>
