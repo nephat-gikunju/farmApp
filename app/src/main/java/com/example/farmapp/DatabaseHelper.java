@@ -12,11 +12,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "userdb";
     public static final int DATABASE_VERSION = 1;
     private static final String TABLE_REGISTRATION = "Registration";
-    private static final String COLUMN_NAME = "Name";
+    private static final String COLUMN_USERNAME = "UserName";
     private static final String COLUMN_EMAIL = "Email";
     private static final String COLUMN_PASSWORD = "Password";
     private static final String COLUMN_FARMNAME = "FarmName";
-    private static final String COLUMN_PHONENUMBER = "PhoneNumber";
 
 
 
@@ -27,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
     String CREATE_TABLE = "CREATE TABLE " + TABLE_REGISTRATION + "(" +
-        COLUMN_NAME +"," + COLUMN_EMAIL +"," + COLUMN_PASSWORD + "," + COLUMN_PHONENUMBER + "," + COLUMN_FARMNAME + ")";
+        COLUMN_USERNAME +"," + COLUMN_EMAIL +"," + COLUMN_PASSWORD +  "," + COLUMN_FARMNAME + ")";
 
     db.execSQL(CREATE_TABLE);
 
@@ -45,11 +44,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public long insertUser(String name ,String email,String password, String farmname ,String phonenumber) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues content = new ContentValues();
-        content.put(COLUMN_NAME, name);
+        content.put(COLUMN_USERNAME, name);
         content.put(COLUMN_EMAIL, email);
         content.put(COLUMN_FARMNAME, farmname);
         content.put(COLUMN_PASSWORD,password);
-        content.put(COLUMN_PHONENUMBER,phonenumber);
 
         return db.insert(TABLE_REGISTRATION ,null ,content);
 
@@ -58,8 +56,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 TABLE_REGISTRATION,
-                new String[]{COLUMN_NAME},
-                COLUMN_NAME + " = ?",
+                new String[]{COLUMN_USERNAME},
+                COLUMN_USERNAME + " = ?",
                 new String[]{username},
                 null,
                 null,
@@ -74,8 +72,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 TABLE_REGISTRATION,
-                new String[]{COLUMN_NAME},
-                COLUMN_NAME + " = ? AND " + COLUMN_PASSWORD + " = ?",  // Where clause
+                new String[]{COLUMN_USERNAME},
+                COLUMN_USERNAME + " = ? AND " + COLUMN_PASSWORD + " = ?",  // Where clause
                 new String[]{username, password},  // Where arguments
                 null,  // Group by
                 null,  // Having

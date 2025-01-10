@@ -1,7 +1,9 @@
 package com.example.farmapp;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,22 +11,30 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Register extends AppCompatActivity {
+public class plant_details extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_plant_details);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        EditText emailedittext = findViewById(R.id.emailedittext);
-        EditText namesedittext = findViewById(R.id.Usernameedittext);
-        EditText passwordedittext = findViewById(R.id.passwordedittext);
-        EditText farmnameedittext = findViewById(R.id.farmNameedittext);
+
+
+
 
     }
+    public void  oneditplantationclick(View view){
+        Intent openeditplantation = new Intent(plant_details.this,EditPlantation.class);
+        startActivity(openeditplantation);
+
+    }
+
+
+
+
 }

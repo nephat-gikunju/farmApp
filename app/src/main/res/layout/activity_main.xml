@@ -36,10 +36,10 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/emailedittext"
+        android:id="@+id/usernameedittext"
         android:padding="15dp"
-        android:inputType="textEmailAddress"
-        android:hint="Email"
+        android:inputType="text"
+        android:hint="Username"
         android:background="@drawable/rectangular_input_background"
         android:layout_margin="10dp"
 

@@ -30,16 +30,26 @@ public class MainActivity extends AppCompatActivity {
 
         }
     public void onloginclick (View v){
-        EditText emailInputedittext = findViewById(R.id.emailedittext);
+        EditText usernameInputedittext = findViewById(R.id.usernameedittext);
         EditText passwordInputedittext = findViewById(R.id.passwordedittext);
 
 
-        String emailinput = emailInputedittext.getText().toString().trim();
+
+
+        String usernameinput = usernameInputedittext.getText().toString().trim();
         String passwordinput =passwordInputedittext.getText().toString().trim();
 
-        if (emailinput.equals("admin@gmail.com") && passwordinput.equals("admin")){
-            Intent dashboardlauncher = new Intent(MainActivity.this, Dashboard.class);
-            startActivity(dashboardlauncher);
+
+
+
+        if (usernameinput.equals("admin") && passwordinput.equals("admin")){
+
+
+            Intent usernameparser = new Intent(MainActivity.this,Dashboard.class);
+            usernameparser.putExtra("USERNAME_KEY",usernameinput);
+            startActivity(usernameparser);
+
+
         }else {
             Toast.makeText(this, "LOGIN UNSUCCESSFUL", Toast.LENGTH_SHORT).show();
 
