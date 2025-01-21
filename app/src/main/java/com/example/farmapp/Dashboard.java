@@ -13,30 +13,27 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Dashboard extends AppCompatActivity {
+    private DatabaseHelper dbhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_dashboard);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
 
         //user name and username status
 
-        Intent getusername = getIntent();
-        String username = getusername.getStringExtra("USERNAME_KEY");
+       String username = getIntent().getStringExtra("USERNAME");
 
 
         TextView UserStatus = findViewById(R.id.user_status);
         UserStatus.setText("Welcome Back, " + username);
 
-
+        DatabaseHelper dbhelper = new DatabaseHelper(this);
+        String farmName = dbhelper.getfarmname(username);
         TextView FarmName = findViewById(R.id.farm_name);
-        FarmName.setText("{farm_name}" + " Farm");
+        FarmName.setText(farmName + " Farm");
 
         //plantation cards
 
@@ -57,8 +54,15 @@ public class Dashboard extends AppCompatActivity {
         startActivity(StartPlantationEdit);
 
     }
+    public void ondeleteplantationclick (View view){
+
+    }
     public void onplantationclick (View view){
         Intent StartPlantation = new Intent(Dashboard.this,plant_details.class);
         startActivity(StartPlantation);
+    }
+    public void onaddplantationclick (View view){
+        Intent AddPlantation = new Intent(Dashboard.this,add_plantation.class);
+        startActivity(AddPlantation);
     }
 }
