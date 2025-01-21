@@ -69,6 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result != -1; // Return true if insertion is successful
     }
 
+
     public boolean checkUserExists(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + TABLE_REGISTRATION + " WHERE " + COLUMN_USERNAME + " = ?";
@@ -77,6 +78,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close(); // Close database connection
         return exists;
+    }
+
+
+    public boolean checkplantationExists(String plantatationname) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM Plantations WHERE PLANTATION_NAME =?";
+        Cursor cursor = db.rawQuery(query, new String[]{plantatationname});
+        boolean exists = cursor.moveToFirst();
+        cursor.close();
+        db.close();
+        return  exists;
+
     }
 
     public boolean validateUser(String username, String password) {
@@ -88,6 +101,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close(); // Close database connection
         return isValid;
     }
+
     public String getfarmname(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + COLUMN_FARMNAME + " FROM " + TABLE_REGISTRATION + " WHERE " + COLUMN_USERNAME + " = ?";
@@ -106,4 +120,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return farmName;
     }
 
+    public boolean addPlantation(String plantationname, String plantationpicture, Integer totalplants, Integer ripeplants, Integer siclkyplants, String plantyear, String location, Integer farmlayoutrows, Integer farmlayoutcolumns) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues content = new ContentValues();
+        content.put("PLANTATION_NAME", plantationname);
+        content.put("PLANTATION_PICTURE", plantationpicture);
+        content.put("TOTAL_PLANTS", totalplants);
+        content.put("RIPE_PLANTS", ripeplants);
+        content.put("SICKLY_PLANTS", siclkyplants);
+        content.put("PLANT_YEAR", plantyear);
+        content.put("LOCATION", location);
+        content.put("FARM_LAYOUT_ROWS", farmlayoutrows);
+        content.put("FARM_LAYOUT_COLUMNS", farmlayoutcolumns);
+
+        long result = db.insert("Plantations", null, content);
+        db.close();
+        return result != -1;
+    }
+
+
+
 }
+
