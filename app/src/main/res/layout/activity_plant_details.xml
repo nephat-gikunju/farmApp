@@ -1,464 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fillViewport="true">
 
-    <!-- Action Bar Layout -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/green_theme"
-        android:gravity="start|center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/Plantaton_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mango Plantation"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <!-- farm name -->
-            <TextView
-                android:id="@+id/farm_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Beta Farm"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Plantation Info and Summaries -->
-    <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:padding="5dp">
+        android:fitsSystemWindows="true">
 
-
-
-
-
-
-
-
+        <!-- Action Bar Layout -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
+            android:background="@color/green_theme"
+            android:gravity="start|center_vertical"
             android:orientation="horizontal"
-            android:padding="12dp"
-            android:layout_weight="1"
-            android:layout_margin="4dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
 
-            android:elevation="4dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                >
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Plantaton_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mango Plantation"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:padding="7dp"
+                    android:textStyle="bold" />
+
                 <ImageView
-                    android:id="@+id/plantation_image"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:padding="12dp"
-                    android:background="@drawable/circular_backgorund"
-                    android:src="@drawable/mango_plant_icon">
-
-                </ImageView>
+                    android:id="@+id/editPlantationButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="170dp"
+                    android:src="@drawable/edit1"
+                    android:layout_marginTop="-5dp"
+                    android:onClick="oneditplantationclick"
+                    android:padding="8dp" />
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="25dp"
-                android:layout_marginTop="-29dp"
-
-                >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mango Plantation"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="#024902" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-
-                android:text="Total Plants: 35"
-                android:textSize="14sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-
-                android:text="Ripe: 34"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-
-                android:text="Sickly: 4"
-                android:textSize="14sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Plant Year: 2010"
-                android:textStyle="bold"
-
-                android:textSize="14sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-
-                android:text="Location: East Farm"
-                android:textSize="14sp" />
-        </LinearLayout>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="40dp"
-                android:padding="0dp"
-                android:layout_marginLeft="19dp"
-                android:src="@drawable/edit1"
-                android:onClick="oneditplantationclick"
-
-
-
-                />
         </LinearLayout>
 
-        <!-- Farm Layout -->
+        <!-- Plantation Info and Summaries -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="12dp"
-            android:layout_weight="1"
-            android:background="@drawable/dashboard_cards_background"
-            android:layout_margin="4dp"
-            android:elevation="4dp">
+            android:layout_marginTop="20dp"
+            android:padding="5dp">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Farm Layout"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="20sp" />
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:elevation="4dp">
+            </LinearLayout>
 
-            <!-- Farm Matrix -->
-            <GridLayout
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp"
+                android:layout_marginTop="-50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:id="@+id/totalPlantsTextView"
+                    android:text="Total Plants: 35"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:id="@+id/ripePlantsTextView"
+                    android:text="Ripe: 34"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:id="@+id/sicklyPlantsTextView"
+                    android:text="Sickly: 4"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Plant Year: 2010"
+                    android:textStyle="bold"
+                    android:id="@+id/plantYearTextView"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:id="@+id/locationTextView"
+                    android:text="Location: East Farm"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Farm Layout -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="7"
-                android:rowCount="5"
-                android:padding="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:alignmentMode="alignMargins"
-                android:useDefaultMargins="true">
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/dashboard_cards_background"
+                android:layout_margin="4dp"
+                android:elevation="4dp">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Farm Layout"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
 
+                <!-- Farm Matrix -->
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" /><ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/mango_plant_icon"
-                android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" /><ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/mango_plant_icon"
-                android:contentDescription="Mango Plant" /><ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/mango_plant_icon"
-                android:contentDescription="Mango Plant" /><ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/mango_plant_icon"
-                android:contentDescription="Mango Plant" /><ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/mango_plant_icon"
-                android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@color/red"
+                        <GridLayout
+                            android:id="@+id/farmLayoutGrid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:columnCount="7"
+                            android:padding="8dp"
+                            android:alignmentMode="alignMargins"
+                            android:useDefaultMargins="true" />
+                    </HorizontalScrollView>
+                </ScrollView>
+            </LinearLayout>
+            </LinearLayout>
 
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp">
 
-                <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/mango_plant_icon"
-                android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@color/red"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="20dp">
 
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/mango_plant_icon"
-                android:contentDescription="Mango Plant"
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/mango_plant_icon"
+                            android:contentDescription="Mango Plant"
+                            android:background="@color/red" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="sickly"
+                            android:padding="10dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
-
-                android:background="@color/red"
-                    />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant"
-                    android:background="@color/red"
-
-                    />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-
-
-
-
-
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mango_plant_icon"
-                    android:contentDescription="Mango Plant" />
-
-                <!-- Continue this block for all 36 plants -->
-            </GridLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/mango_plant_icon"
+                            android:contentDescription="Mango Plant"
+                            android:background="#FFC107" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ready"
+                            android:padding="10dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           android:layout_margin="20dp"
-           >
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               android:layout_margin="20dp"
-               >
-
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="horizontal"
-               >
-               <ImageView
-                   android:layout_width="40dp"
-                   android:layout_height="40dp"
-                   android:src="@drawable/mango_plant_icon"
-                   android:contentDescription="Mango Plant"
-
-                   android:background="@color/red"
-                   />
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="sickly"
-                   android:padding="10dp"
-                   android:textStyle="bold"/>
-
-
-           </LinearLayout>
-
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="horizontal"
-               >
-               <ImageView
-                   android:layout_width="40dp"
-                   android:layout_height="40dp"
-                   android:layout_marginTop="5dp"
-                   android:src="@drawable/mango_plant_icon"
-                   android:contentDescription="Mango Plant"
-
-                   android:background="#FFC107"
-                   />
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="ready"
-                   android:padding="10dp"
-                   android:textStyle="bold"/>
-
-
-           </LinearLayout>
-           </LinearLayout>
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="horizontal"
-               android:layout_marginTop="20dp"
-
-               >
-               <ImageView
-                   android:layout_width="40dp"
-                   android:layout_height="40dp"
-                   android:src="@drawable/mango_plant_icon"
-                   android:contentDescription="Mango Plant"
-
-                   />
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Healthy And Unripe"
-                   android:padding="10dp"
-                   android:textStyle="bold"/>
-
-
-           </LinearLayout>
-
-
-
-       </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+</ScrollView>
