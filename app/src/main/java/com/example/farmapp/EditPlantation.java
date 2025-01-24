@@ -1,5 +1,8 @@
 package com.example.farmapp;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,18 +25,23 @@ public class EditPlantation extends AppCompatActivity {
     private EditText farmRowLayoutEditText;
     private EditText farmColumnLayoutEditText;
 
+    private DatabaseHelper dbHelper;
+    private String plantationName;  // To identify plantation to update
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_edit_plantation);
 
-        // Apply padding for system bars
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.edit_plantation_layout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Initialize DatabaseHelper
+        dbHelper = new DatabaseHelper(this);
 
         // Initialize EditText fields
         plantationNameEditText = findViewById(R.id.plantation_name_edittext);
@@ -44,12 +52,43 @@ public class EditPlantation extends AppCompatActivity {
         locationEditText = findViewById(R.id.location_edittext);
         farmRowLayoutEditText = findViewById(R.id.farm_row_layout_edittext);
         farmColumnLayoutEditText = findViewById(R.id.farm_column_layout_edittext);
+
+        // Get plantation name from intent
+        plantationName = getIntent().getStringExtra("PLANTATION_NAME");
+
+        // Load plantation details into form
+        loadPlantationDetails();
+    }
+
+    private void loadPlantationDetails() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        // Query plantation details based on plantation name
+        Cursor cursor = db.query("Plantations",
+                null,
+                "PLANTATION_NAME = ?",
+                new String[]{plantationName},
+                null, null, null);
+
+        if (cursor.moveToFirst()) {
+            plantationNameEditText.setText(cursor.getString(cursor.getColumnIndexOrThrow("PLANTATION_NAME")));
+            totalPlantsEditText.setText(String.valueOf(cursor.getInt(cursor.getColumnIndexOrThrow("TOTAL_PLANTS"))));
+            ripePlantsEditText.setText(String.valueOf(cursor.getInt(cursor.getColumnIndexOrThrow("RIPE_PLANTS"))));
+            sicklyPlantsEditText.setText(String.valueOf(cursor.getInt(cursor.getColumnIndexOrThrow("SICKLY_PLANTS"))));
+            plantYearEditText.setText(cursor.getString(cursor.getColumnIndexOrThrow("PLANT_YEAR")));
+            locationEditText.setText(cursor.getString(cursor.getColumnIndexOrThrow("LOCATION")));
+            farmRowLayoutEditText.setText(String.valueOf(cursor.getInt(cursor.getColumnIndexOrThrow("FARM_LAYOUT_ROWS"))));
+            farmColumnLayoutEditText.setText(String.valueOf(cursor.getInt(cursor.getColumnIndexOrThrow("FARM_LAYOUT_COLUMNS"))));
+        }
+
+        cursor.close();
+        db.close();
     }
 
     // Method to handle the Save Changes button click
     public void onSavePlantationClick(View view) {
         // Retrieve data from EditText fields
-        String plantationName = plantationNameEditText.getText().toString().trim();
+        String newPlantationName = plantationNameEditText.getText().toString().trim();
         String totalPlants = totalPlantsEditText.getText().toString().trim();
         String ripePlants = ripePlantsEditText.getText().toString().trim();
         String sicklyPlants = sicklyPlantsEditText.getText().toString().trim();
@@ -59,16 +98,34 @@ public class EditPlantation extends AppCompatActivity {
         String farmColumnLayout = farmColumnLayoutEditText.getText().toString().trim();
 
         // Validate inputs
-        if (plantationName.isEmpty() || totalPlants.isEmpty() || ripePlants.isEmpty() ||
+        if (newPlantationName.isEmpty() || totalPlants.isEmpty() || ripePlants.isEmpty() ||
                 sicklyPlants.isEmpty() || plantYear.isEmpty() || location.isEmpty() ||
                 farmRowLayout.isEmpty() || farmColumnLayout.isEmpty()) {
             Toast.makeText(this, "Please fill out all fields.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Save changes (you can replace this with database or API integration logic)
-        Toast.makeText(this, "Plantation details updated successfully!", Toast.LENGTH_SHORT).show();
+        // Update database with new values
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("PLANTATION_NAME", newPlantationName);
+        values.put("TOTAL_PLANTS", Integer.parseInt(totalPlants));
+        values.put("RIPE_PLANTS", Integer.parseInt(ripePlants));
+        values.put("SICKLY_PLANTS", Integer.parseInt(sicklyPlants));
+        values.put("PLANT_YEAR", plantYear);
+        values.put("LOCATION", location);
+        values.put("FARM_LAYOUT_ROWS", Integer.parseInt(farmRowLayout));
+        values.put("FARM_LAYOUT_COLUMNS", Integer.parseInt(farmColumnLayout));
 
-        // You can add logic here to navigate back or update other parts of the app
+        int rowsUpdated = db.update("Plantations", values, "PLANTATION_NAME = ?", new String[]{plantationName});
+
+        db.close();
+
+        if (rowsUpdated > 0) {
+            Toast.makeText(this, "Plantation details updated successfully!", Toast.LENGTH_SHORT).show();
+            finish();  // Close activity after successful update
+        } else {
+            Toast.makeText(this, "Failed to update plantation details.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

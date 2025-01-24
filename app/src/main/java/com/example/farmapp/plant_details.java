@@ -37,7 +37,6 @@ public class plant_details extends AppCompatActivity {
         sicklyPlantsTV = findViewById(R.id.sicklyPlantsTextView);
         plantYearTV = findViewById(R.id.plantYearTextView);
         locationTV = findViewById(R.id.locationTextView);
-        editButton = findViewById(R.id.editPlantationButton);
 
         // Load plantation details
         loadPlantationDetails();
@@ -138,8 +137,9 @@ public class plant_details extends AppCompatActivity {
     }
 
 
-    public void oneditplantationclick(View view) {
-        Intent openeditplantation = new Intent(plant_details.this, EditPlantation.class);
-        startActivity(openeditplantation);
+    public void onEditPlantationClick(String plantationName) {
+        Intent intent = new Intent(plant_details.this, EditPlantation.class);
+        intent.putExtra("PLANTATION_NAME", plantationName);
+        startActivity(intent);
     }
 }
