@@ -23,7 +23,7 @@ public class Dashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DynamicColors.applyToActivityIfAvailable(this); // Optional, for dynamic theming
+        DynamicColors.applyToActivityIfAvailable(this);
         setContentView(R.layout.activity_dashboard);
 
         dbHelper = new DatabaseHelper(this);
@@ -46,6 +46,10 @@ public class Dashboard extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM Plantations", null);
 
+        plantationsContainer.removeAllViews(); // Clear any existing views
+        LinearLayout currentRow = null;
+
+        int cardsInRow = 0;
         if (cursor.moveToFirst()) {
             do {
                 // Get plantation data
@@ -56,8 +60,22 @@ public class Dashboard extends AppCompatActivity {
 
                 // Create and add plantation card
                 View plantationCard = createPlantationCard(plantationName, totalPlants, ripePlants, plantationPicture);
-                plantationsContainer.addView(plantationCard);
 
+                if (cardsInRow == 0) {
+                    currentRow = new LinearLayout(this);
+                    currentRow.setOrientation(LinearLayout.HORIZONTAL);
+                    currentRow.setLayoutParams(new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT));
+                    plantationsContainer.addView(currentRow);
+                }
+
+                currentRow.addView(plantationCard);
+                cardsInRow++;
+
+                if (cardsInRow == 3) {
+                    cardsInRow = 0; // Reset for the next row
+                }
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -87,6 +105,14 @@ public class Dashboard extends AppCompatActivity {
         cardView.setOnClickListener(v -> onPlantationClick(name));
         cardView.findViewById(R.id.oneditplantationclick).setOnClickListener(v -> onEditPlantationClick(name));
         cardView.findViewById(R.id.ondeleteplantationclick).setOnClickListener(v -> onDeletePlantationClick(name));
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                0, // Width of each card
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                1.0f // Weight to distribute cards evenly in the row
+        );
+        layoutParams.setMargins(8, 8, 8, 8);
+        cardView.setLayoutParams(layoutParams);
 
         return cardView;
     }
